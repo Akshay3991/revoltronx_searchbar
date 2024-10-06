@@ -6,6 +6,7 @@
 2. Open the project in your preferred code editor.
 
 ### INstructions on how to setup and run the search function->
+installation in parent directory--
 **Install Vite:** If you haven't installed Vite yet, you can do so by running the following command in your project directory:
 >>   npm install vite --save-dev
 
