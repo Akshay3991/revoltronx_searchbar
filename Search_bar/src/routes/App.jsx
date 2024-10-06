@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Permanents from "../components/Permanents";
+import { ApiListProvider } from "../Store/api-list-store";
+
 function App() {
   return (
-    <div>
-      <Permanents />
-      <Outlet />
-    </div>
+    <ApiListProvider>
+      <div>
+        <Permanents />
+        <Outlet />
+      </div>
+    </ApiListProvider>
   );
 }
 
