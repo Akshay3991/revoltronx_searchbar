@@ -7,6 +7,21 @@
 
 ### INstructions on how to setup and run the search function->
 
+installation in parent directory--
+**Install Vite:** If you haven't installed Vite yet, you can do so by running the following command in your project directory:
+>>   npm install vite --save-dev
+
+**Check Global Installation:** If you want to use Vite globally, you can install it globally with:
+>>    npm install -g vite
+
+**Verify Installation:** After installation, verify that Vite is installed correctly by running:
+>>    vite --version
+>> 
+1.  To run the search function
+    > > Open new Terminal
+    > > change directory to the Search_bar by running following command in the terminal
+    > > cd Search_bar
+
 1.  To run the search function
     > > Open new Terminal
     > > change directory to the Search_bar by running following command in the terminal
