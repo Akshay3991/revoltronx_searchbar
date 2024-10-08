@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 
-const SearchResults = ({ fetchYdata, fetchAbdata, fetchApdata,searchBy,handleCheckboxChange }) => {
+const SearchResults = ({
+  fetchYdata,
+  fetchAbdata,
+  fetchApdata,
+  searchBy,
+  handleCheckboxChange,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <nav className="flex bg-[whitesmoke] w-[100vw] h-[5vh]">
       <div className="w-[20%] p-2">
