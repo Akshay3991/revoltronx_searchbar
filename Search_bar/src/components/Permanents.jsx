@@ -26,6 +26,17 @@ function Permanents() {
     setSearchValue(value);
   };
 
+  const rankResults = (results) => {
+    // Custom ranking logic based on likes, relevance, and view count
+    return results.sort((a, b) => {
+      const aScore =
+        (a.likes || 0) + (a.viewCount || 0) + (a.relevance ? 1 : 0);
+      const bScore =
+        (b.likes || 0) + (b.viewCount || 0) + (b.relevance ? 1 : 0);
+      return bScore - aScore; // Descending order
+    });
+  };
+
   const fetchYdata = async () => {
     fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${searchQuery}&type=video&order=${searchValue}`
@@ -37,12 +48,14 @@ function Permanents() {
         return response.json();
       })
       .then((data) => {
-        addYuData(data);
+        const rankedData = rankResults(data.items); // Assuming data.items contains the results
+        addYuData(rankedData);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   };
+
   const fetchAbdata = async () => {
     fetch(
       `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cseId}&q=${searchQuery}`
@@ -54,12 +67,14 @@ function Permanents() {
         return response.json();
       })
       .then((data) => {
-        addABdata(data);
+        const rankedData = rankResults(data.items); // Assuming data.items contains the results
+        addABdata(rankedData);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   };
+
   const fetchApdata = async () => {
     fetch(`http://localhost:3000/?query=${searchQuery}`)
       .then((response) => {
@@ -69,7 +84,8 @@ function Permanents() {
         return response.json();
       })
       .then((data) => {
-        addAcData(data);
+        const rankedData = rankResults(data.items); // Assuming data.items contains the results
+        addAcData(rankedData);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -82,6 +98,7 @@ function Permanents() {
     fetchAbdata();
     fetchApdata();
     setSearch("");
+    setSearchQuery("");
   };
   return (
     <div className="bg-[black] w-[100%] h-[100%]">
