@@ -19,7 +19,7 @@ const server = createServer(async (req, res) => {
     const response = await getJson({
       engine: "google",
       api_key:
-        "28787223065f117d4f1b0b113032804f077bdde0af7fc562ddb92effe7581f90", // Get your API_KEY first
+        "", // Get your API_KEY first
       q: query,
       location: location,
     });
